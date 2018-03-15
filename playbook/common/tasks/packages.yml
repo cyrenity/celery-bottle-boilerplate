@@ -1,0 +1,49 @@
+---
+- name: Update repositories cache 
+  apt: update_cache=yes cache_valid_time=3600
+  tags: packages
+
+- name: Install base packages
+  apt: name={{ item }}  state=present
+  with_items:
+   - python-pip
+   - supervisor
+   - nginx
+   - libssl-dev
+   - libcurl4-openssl-dev
+   - libmysqlclient-dev
+   - rabbitmq-server
+   - ssl-cert
+  tags: packages
+
+- name: Upgrade pip
+  pip: name=pip state=latest
+  tags: packages
+
+
+- name: Install virtualenv
+  pip: name=virtualenv  
+  tags: packages
+
+- name: Install required python packages
+  pip: name={{ item }} virtualenv={{ base_dir }}
+  with_items:
+    - suds
+    - pycurl
+    - simplejson
+    - gunicorn
+    - celery
+    - bottle
+    - https://github.com/mher/flower/zipball/master
+    - raven
+  tags: packages
+
+
+- name: Enables the rabbitmq_management plugin
+  rabbitmq_plugin: 
+    names: rabbitmq_management
+    state: enabled
+  tags: packages,rabbitmq
+
+
+

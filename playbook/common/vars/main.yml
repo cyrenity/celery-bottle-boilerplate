@@ -1,0 +1,14 @@
+---
+# vars file for common
+app_name: pmnhi
+base_dir: "/opt/{{ app_name }}"
+app_dir: "{{ base_dir }}/app"
+logs_dir: "{{ base_dir }}/logs"
+scripts_dir: "{{ base_dir }}/scripts"
+app_user: "{{ app_name }}"
+app_group: "{{ app_name }}"
+
+nginx_access_log_file: /var/log/nginx/pmnhi-access.log
+nginx_error_log_file: /var/log/nginx/pmnhi-error.log
+
+

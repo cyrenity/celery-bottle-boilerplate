@@ -1,0 +1,13 @@
+---
+- name: Create the application user
+  user: name={{ app_user }} state=present
+  tags: setup
+
+- name: Create the application group
+  group: name={{ app_group }} system=yes state=present
+  tags: setup
+
+- name: Add the application user to the application group
+  user: name={{ app_user }} group={{ app_group }} state=present
+  tags: setup
+

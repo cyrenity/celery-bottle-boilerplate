@@ -1,0 +1,15 @@
+---
+# tasks file for common
+- include: host.yml
+
+- include: packages.yml
+
+- include: users_and_groups.yml 
+
+- include: supervisord.yml
+
+- include: app.yml
+
+- include: nginx.yml
+
+

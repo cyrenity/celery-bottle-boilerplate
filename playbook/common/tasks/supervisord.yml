@@ -1,0 +1,85 @@
+---
+- name: Ensure supervisord's config is absent
+  file:  path=/etc/supervisor/conf.d state=absent
+  tags: setup
+
+- name: Create supervisord's config dir
+  file: path=/etc/supervisor/conf.d state=directory 
+  tags: setup
+
+
+- name: Create the folder for the celery scripts
+  file: path={{ scripts_dir }}
+        owner={{ app_user }}
+        group={{ app_group  }}
+        mode=0774
+        state=directory
+  tags:
+    - setup
+
+
+- name: Create the celery script file
+  template: src=celery_start.j2
+            dest={{ scripts_dir }}/celery_start
+            owner={{ app_user }}
+            group={{ app_group }}
+            mode=0755
+  tags:
+    - setup
+
+
+- name: Create the flower script file
+  template: src=flower_start.j2
+            dest={{ scripts_dir }}/flower_start
+            owner={{ app_user }}
+            group={{ app_group }}
+            mode=0755
+  tags:
+    - setup
+
+
+- name: Create the webapp script file
+  template: src=webapp_start.j2
+            dest={{ scripts_dir }}/webapp_start
+            owner={{ app_user }}
+            group={{ app_group }}
+            mode=0755
+  tags:
+    - setup
+
+- name: Create the {{ app_name }} logs directory
+  file: path={{ logs_dir }}
+        owner={{ app_user }}
+        group={{ app_group }}
+        state=directory
+  tags:
+    - setup
+
+
+
+- name: Create the run directory
+  file: path="{{ base_dir }}/run"
+        owner={{ app_user }}
+        group={{ app_group }}
+        state=directory
+  tags:
+    - setup
+
+
+
+- name: Create the Supervisor config file
+  template: src=supervisor_apps.conf.j2
+            dest=/etc/supervisor/conf.d/supervisor_apps.conf
+  notify: restart supervisor
+  tags:
+    - setup
+
+
+
+
+
+
+
+
+
+

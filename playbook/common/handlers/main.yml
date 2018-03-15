@@ -1,0 +1,19 @@
+---
+- name: restart gunicorn
+  supervisorctl: name=webapp state=restarted
+
+- name: restart celery
+  supervisorctl: name='celery' state=restarted
+
+- name: restart flower
+  supervisorctl: name=flower state=restarted
+
+- name: restart nginx
+  service: name=nginx state=restarted enabled=yes
+
+- name: restart supervisor
+  service: name=supervisor state=restarted enabled=yes
+
+- name: reload nginx
+  service: name=nginx state=reloaded
+

@@ -1,0 +1,29 @@
+---
+
+- name: Create the folder for the app
+  file: path={{ app_dir }}
+        owner={{ app_user }}
+        group={{ app_group  }}
+        mode=0774
+        state=directory
+  tags:
+    - setup
+
+- name: Copy webapp main file
+  copy: 
+    src: pmnhi.py
+    dest: "{{ app_dir }}/pmnhi.py"
+  notify: restart gunicorn
+  tags:
+    - setup
+
+
+- name: Copy celery tasks file
+  copy: 
+    src: tasks.py
+    dest: "{{ app_dir }}/tasks.py"
+  notify: restart celery
+  tags:
+    - setup
+
+

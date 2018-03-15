@@ -1,0 +1,2 @@
+[pmnhi]
+pmnhi   ansible_ssh_host=10.10.110.118  ansible_ssh_user=mustafa

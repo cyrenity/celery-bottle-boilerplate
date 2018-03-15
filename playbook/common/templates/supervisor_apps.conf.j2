@@ -1,0 +1,33 @@
+[program:celery]
+command={{ base_dir }}/scripts/celery_start
+
+user={{ app_user }}
+autostart=true
+autorestart=true
+
+stdout_logfile={{ logs_dir }}/celery.log
+redirect_stderr = true
+
+
+
+[program:flower]
+command={{ base_dir }}/scripts/flower_start
+
+autostart=true
+autorestart=true
+user={{ app_user }}
+
+stdout_logfile={{ logs_dir }}/flower.log
+redirect_stderr = true
+
+
+[program:gunicorn]
+command={{ base_dir }}/scripts/webapp_start
+
+autostart=true
+autorestart=true
+user={{ app_user }}
+
+stdout_logfile={{ logs_dir }}/gunicorn.log
+redirect_stderr = true
+
