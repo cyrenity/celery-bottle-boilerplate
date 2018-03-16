@@ -9,10 +9,10 @@
   tags:
     - setup
 
-- name: Copy webapp main file
+- name: Copy gunicorn app main file
   copy: 
-    src: pmnhi.py
-    dest: "{{ app_dir }}/pmnhi.py"
+    src: app.py
+    dest: "{{ app_dir }}/{{ app_name }}.py"
   notify: restart gunicorn
   tags:
     - setup

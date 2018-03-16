@@ -1,9 +1,9 @@
 ---
 - name: restart gunicorn
-  supervisorctl: name=webapp state=restarted
+  supervisorctl: name=gunicorn state=restarted
 
 - name: restart celery
-  supervisorctl: name='celery' state=restarted
+  supervisorctl: name='celery:' state=restarted
 
 - name: restart flower
   supervisorctl: name=flower state=restarted

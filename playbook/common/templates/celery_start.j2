@@ -8,5 +8,5 @@ cd $APPDIR
 
 # Programs meant to be run under supervisor should not daemonize themselves
 # (do not use --daemon).
-C_FORCE_ROOT=yes exec celery -A tasks worker -E -l info --concurrency=2 --hostname celery@ -Q celery
+C_FORCE_ROOT=yes exec celery -A tasks worker -E -l $4 --concurrency=$3 --hostname $1@ -Q $2 
 

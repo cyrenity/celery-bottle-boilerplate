@@ -8,7 +8,11 @@ scripts_dir: "{{ base_dir }}/scripts"
 app_user: "{{ app_name }}"
 app_group: "{{ app_name }}"
 
-nginx_access_log_file: /var/log/nginx/pmnhi-access.log
-nginx_error_log_file: /var/log/nginx/pmnhi-error.log
+nginx_access_log_file: /var/log/nginx/{{ app_name }}-access.log
+nginx_error_log_file: /var/log/nginx/{{ app_name }}-error.log
 
+celery_workers: 
+  - { name: 'celery',  queue: 'celery', concurrency: 1, log_level: 'info' } 
+  - { name: 'high',  queue: 'high', concurrency: 1, log_level: 'warning' } 
+  - { name: 'low',  queue: 'low', concurrency: 2, log_level: 'warning' } 
 

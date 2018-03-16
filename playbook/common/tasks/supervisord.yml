@@ -28,6 +28,17 @@
     - setup
 
 
+- name: Create the celery beat script file
+  template: src=celery_beat_start.j2
+            dest={{ scripts_dir }}/celery_beat_start
+            owner={{ app_user }}
+            group={{ app_group }}
+            mode=0755
+  tags:
+    - setup
+
+
+
 - name: Create the flower script file
   template: src=flower_start.j2
             dest={{ scripts_dir }}/flower_start
@@ -38,9 +49,9 @@
     - setup
 
 
-- name: Create the webapp script file
-  template: src=webapp_start.j2
-            dest={{ scripts_dir }}/webapp_start
+- name: Create the gunicorn script file
+  template: src=gunicorn_start.j2
+            dest={{ scripts_dir }}/gunicorn_start
             owner={{ app_user }}
             group={{ app_group }}
             mode=0755
@@ -73,13 +84,5 @@
   notify: restart supervisor
   tags:
     - setup
-
-
-
-
-
-
-
-
-
+    - celery_workers
 
