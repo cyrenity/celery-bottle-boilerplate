@@ -46,6 +46,5 @@ stdout_logfile={{ logs_dir }}/gunicorn.log
 redirect_stderr = true
 
 
-
 [group:celery] 
 {% set comma = joiner(",") %}programs={% for worker in celery_workers %}{{ comma() }}celery-{{ worker.name }}{% endfor %} 
