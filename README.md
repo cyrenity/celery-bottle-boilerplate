@@ -37,4 +37,4 @@ This is a good starting point for modern High performance Python web projects
 > `ansible-playbook  -i inventory.txt main.yml  --ask-become-pass -e "app_name=MYAPP"`     
 >  Replace MYAPP with your desired app name (NO special characters and spaces)
 
-
+- Test your setup by pointing your browser to the ip address of your app server, You will be able to run a basic task and view it's result 
