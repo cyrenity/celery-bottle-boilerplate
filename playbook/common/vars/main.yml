@@ -1,6 +1,6 @@
 ---
 # vars file for common
-app_name: pmnhi
+app_name: myapp
 base_dir: "/opt/{{ app_name }}"
 app_dir: "{{ base_dir }}/app"
 logs_dir: "{{ base_dir }}/logs"

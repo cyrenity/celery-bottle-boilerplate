@@ -1,5 +1,5 @@
 ---
-- hosts: pmnhi
+- hosts: app_servers
   become: true   
   become_method: sudo   
   environment:     
