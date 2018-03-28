@@ -25,7 +25,7 @@ This is a good starting point for modern High performance Python web projects
 > \[app_servers\]      
 > app_server   ansible_ssh_host=192.168.0.10  ansible_ssh_user=ssh_user
 
-- Enable password less login for ssh_user@192.168.0.10 
+- Enable password less login for `ssh_user@192.168.0.10`    
 
     Run `ssh-keygen` to generate your SSH key and
     then run below command to enable password less login for your server
