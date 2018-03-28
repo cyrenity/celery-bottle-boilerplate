@@ -12,7 +12,7 @@ This is a good starting point for modern High performance Python web projects
 
 ## Dependencies
 
-- Ubuntu 16.04
+- Ubuntu/Debian
 - Ansible
 
 
