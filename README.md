@@ -19,8 +19,8 @@ This is a good starting point for modern High performance Python web projects
 ## Installation Instructions
 
 - Clone this repository on your workstation 
-- `git clone https://github.com/cyrenity/celery_runner.git`
-- Change directory to celery_runner `cd celery_runner`
+- `git clone https://github.com/cyrenity/celery-bottle-boilerplate.git`
+- Change directory to playbook directory `cd celery-bottle-boilerplate/playbook`
 - Create ansible inventory (inventory.txt) for your host, it should look like this
 > \[app_servers\]      
 > app_server   ansible_ssh_host=192.168.0.10  ansible_ssh_user=ssh_user
