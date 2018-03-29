@@ -1,15 +1,11 @@
 version: '3.0'
 services:
     app:
-        build: .
-        image: app
-        command: supervisord
+        image: cyrenity/celery-boilerplate
         hostname: "app-01"
-        container_name: "app"
-        expose:
-            - 80
+        container_name: "app-server"
         ports:
-            - "80:80"
+            - "8080:80"
         links:
             - rabbitmq
         depends_on:
@@ -18,10 +14,7 @@ services:
     rabbitmq:
         image: rabbitmq:management-alpine
         hostname: "rabbitmq"
-        container_name: "rabbitmq"
-        volumes:
-            - /tmp/.docker_data/data/db:/data/db
+        container_name: "rabbitmq-server"
         ports:
             - "15672:15672"
             - "5672:5672"
-
