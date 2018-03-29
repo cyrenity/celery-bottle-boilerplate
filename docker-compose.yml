@@ -1,0 +1,27 @@
+version: '3.0'
+services:
+    app:
+        build: .
+        image: app
+        command: supervisord
+        hostname: "app-01"
+        container_name: "app"
+        expose:
+            - 80
+        ports:
+            - "80:80"
+        links:
+            - rabbitmq
+        depends_on:
+            - rabbitmq
+
+    rabbitmq:
+        image: rabbitmq:management-alpine
+        hostname: "rabbitmq"
+        container_name: "rabbitmq"
+        volumes:
+            - /tmp/.docker_data/data/db:/data/db
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+

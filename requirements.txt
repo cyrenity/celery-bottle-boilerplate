@@ -6,3 +6,4 @@ celery
 bottle
 https://github.com/mher/flower/zipball/master
 raven
+supervisor
