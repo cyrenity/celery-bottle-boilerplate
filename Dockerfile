@@ -1,8 +1,8 @@
 FROM python:2.7
 
 #Setup any proxy parameters if you are behind a corporate proxy 
-ENV http_proxy http://10.10.150.150:8118 
-ENV https_proxy http://10.10.150.150:8118
+#ENV http_proxy http://10.10.150.150:8118 
+#ENV https_proxy http://10.10.150.150:8118
 
 WORKDIR /app
 
