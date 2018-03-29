@@ -5,7 +5,7 @@
 - name: Create the app folder 
   file: path={{ app_dir }}
         owner={{ app_user }}
-        group={{ app_group  }}
+        group={{ app_group }}
         mode=0774
         state=directory
   tags:

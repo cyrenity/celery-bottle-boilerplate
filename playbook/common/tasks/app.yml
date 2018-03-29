@@ -18,3 +18,13 @@
     - setup
 
 
+- name: Fix {{ base_dir }}  permissions
+  file: 
+    path: "{{ base_dir }}"  
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0775 
+    state: directory 
+    recurse: yes
+  tags: 
+    - setup
