@@ -4,6 +4,8 @@ services:
         image: cyrenity/celery-boilerplate
         hostname: "app-01"
         container_name: "app-server"
+        volumes:
+            - "./:/app"
         ports:
             - "8080:80"
         links:

@@ -10,13 +10,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Setup Supervisord
-RUN mkdir -p /var/log/supervisor /etc/supervisor/conf.d
+RUN mkdir -p /var/log/supervisor
 COPY extras/docker/supervisord.conf /etc/supervisord.conf
 
 # Setup smsgwapp
-COPY extras/docker/*_start.sh /app/scripts/
+COPY extras/docker/*_start.sh /scripts/
 
-RUN chmod +x /app/scripts/*_start.sh
+RUN chmod +x /scripts/*_start.sh
 
 COPY extras/docker/nginx.conf /etc/nginx/sites-available/default
 

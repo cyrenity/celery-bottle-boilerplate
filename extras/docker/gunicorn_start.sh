@@ -1,4 +1,5 @@
 #!/bin/sh
+cd /app
 
 NAME="app"
 APPDIR="/app"
@@ -23,4 +24,3 @@ exec gunicorn \
     --bind unix:$SOCKFILE \
     --chdir /app \
     app:app
-
