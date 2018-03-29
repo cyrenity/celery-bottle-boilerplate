@@ -1,18 +1,9 @@
 ---
 
-- name: Create the folder for the app
-  file: path={{ app_dir }}
-        owner={{ app_user }}
-        group={{ app_group  }}
-        mode=0774
-        state=directory
-  tags:
-    - setup
-
 - name: Copy gunicorn app main file
   copy: 
-    src: app.py
-    dest: "{{ app_dir }}/{{ app_name }}.py"
+    src: "{{ playbook_dir }}/../app.py"
+    dest: "{{ app_dir }}/app.py"
   notify: restart gunicorn
   tags:
     - setup
@@ -20,7 +11,7 @@
 
 - name: Copy celery tasks file
   copy: 
-    src: tasks.py
+    src: "{{ playbook_dir }}/../tasks.py"
     dest: "{{ app_dir }}/tasks.py"
   notify: restart celery
   tags:

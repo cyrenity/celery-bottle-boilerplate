@@ -47,4 +47,4 @@ redirect_stderr = true
 
 
 [group:celery] 
-{% set comma = joiner(",") %}programs={% for worker in celery_workers %}{{ comma() }}celery-{{ worker.name }}{% endfor %} 
+{% set comma = joiner(",") %}programs={% for worker in celery_workers %}{{ comma() }}celery-{{ worker.name }}{% endfor %},celery-beat

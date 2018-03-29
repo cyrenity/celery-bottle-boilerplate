@@ -33,5 +33,5 @@ exec gunicorn \
     --log-level debug \
     --bind unix:$SOCKFILE \
     --chdir {{ app_dir }} \
-    {{ app_name }}:app
+    app:app
 

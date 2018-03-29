@@ -25,19 +25,18 @@
   pip: name=virtualenv  
   tags: packages
 
-- name: Install required python packages
-  pip: name={{ item }} virtualenv={{ base_dir }}
-  with_items:
-    - suds
-    - pycurl
-    - simplejson
-    - gunicorn
-    - celery
-    - bottle
-    - https://github.com/mher/flower/zipball/master
-    - raven
-  tags: packages
+- name: Copy requirements file
+  copy:
+    src: "{{ playbook_dir }}/../requirements.txt"
+    dest: "{{ app_dir }}/requirements.txt"
+  tags:
+    - packages,setup
 
+- name: Install required python packages
+  pip: 
+    requirements: "{{ app_dir }}/requirements.txt"
+    virtualenv: "{{ base_dir }}"
+  tags: packages
 
 - name: Enables the rabbitmq_management plugin
   rabbitmq_plugin: 

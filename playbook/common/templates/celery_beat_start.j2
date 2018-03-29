@@ -8,5 +8,5 @@ cd $APPDIR
 
 # Programs meant to be run under supervisor should not daemonize themselves
 # (do not use --daemon).
-C_FORCE_ROOT=yes exec celery -A tasks beat -s {{ logs_dir }}/celerybeat-schedule.db -l info --max-interval 500
+exec celery -A tasks beat -s {{ logs_dir }}/celerybeat-schedule.db -l info --max-interval 500
 

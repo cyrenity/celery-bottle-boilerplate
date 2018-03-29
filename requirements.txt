@@ -1,0 +1,8 @@
+suds
+pycurl
+simplejson
+gunicorn
+celery
+bottle
+https://github.com/mher/flower/zipball/master
+raven
