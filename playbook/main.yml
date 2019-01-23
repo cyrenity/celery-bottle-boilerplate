@@ -2,8 +2,8 @@
 - hosts: app_servers
   become: true   
   become_method: sudo   
-  environment:     
-    http_proxy: http://proxy_server:port/     
-    https_proxy: http://proxy_server:port/
+  #environment:     
+  #  http_proxy: http://proxy_server:port/     
+  #  https_proxy: http://proxy_server:port/
   roles:
     - common

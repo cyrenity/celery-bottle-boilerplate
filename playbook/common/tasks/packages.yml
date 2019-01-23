@@ -4,16 +4,9 @@
   tags: packages
 
 - name: Install base packages
-  apt: name={{ item }}  state=present
-  with_items:
-   - python-pip
-   - supervisor
-   - nginx
-   - libssl-dev
-   - libcurl4-openssl-dev
-   - libmysqlclient-dev
-   - rabbitmq-server
-   - ssl-cert
+  apt: 
+    name: ['python-pip', 'supervisor', 'nginx', 'libssl-dev', 'libcurl4-openssl-dev', 'libmysqlclient-dev', 'rabbitmq-server', 'ssl-cert']
+    state: present
   tags: packages
 
 - name: Upgrade pip
