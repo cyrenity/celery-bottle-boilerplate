@@ -3,7 +3,7 @@
   become: true   
   become_method: sudo   
   environment:     
-    http_proxy: http://10.10.150.150:8118/     
-    https_proxy: http://10.10.150.150:8118/
+    http_proxy: http://proxy_server:port/     
+    https_proxy: http://proxy_server:port/
   roles:
     - common
